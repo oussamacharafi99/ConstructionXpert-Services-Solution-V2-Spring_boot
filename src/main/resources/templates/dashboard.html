@@ -34,7 +34,7 @@
                 <select id="mySelect" onchange="location = this.value;">
                     <option value="">Select Project ...</option>
                     <th:block th:each="project : ${projects}">
-                        <option th:value="@{'/ViewProject?id=' + ${project.id}}" th:text="${project.name}"></option>
+                        <option th:value="@{'/showProject?id=' + ${project.id}}" th:text="${project.name}"></option>
                     </th:block>
                 </select>
             </div>

@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Braah+One&family=Lexend:wght@100..900&family=Magra:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --color-primary: #EB1900;
+    --color-light:#ffff;
+    --color-secondary: #d5003f;
+    --dark-color:           #171819;
+    --about-bg-color:       #f9f9f9;
+
+    --gray-color:           #909090;
+    --link-color:           #404040;
+    --p-color:              #666262;
+
+    --base-font-family:     'Plain', sans-serif;
+    --font-weight-bold:     bold;
+    --font-weight-normal:   normal;
+    --font-weight-light:    300;
+    --font-weight-thin:     100;
+
+    --h1-font-size:         48px;
+    --h2-font-size:         36px;
+    --h3-font-size:         28px;
+    --h4-font-size:         24px;
+    --h5-font-size:         22px;
+    --h6-font-size:         22px;
+    --p-font-size:          18px;
+    --base-font-size:       16px;
+    --menu-font-size:       14px;
+
+    --border-radius-large:  100%;
+    --border-radius-small:  2px;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+::-webkit-scrollbar {
+    width: 3px;
+    height:3px;
+}
+
+::-webkit-scrollbar-track {
+    background: #333333;
+}
+
+::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: black;
+}
+:root {
+    --gray: #34495e;
+    --darkgray: #2c3e50;
+}
+
+/*---------------------------------------
+   MODAL
+-----------------------------------------*/
+
+.modal-content {
+    padding: 2rem 3rem;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    border: 0;
+    padding: 0;
+}
+
+.membership-form a {
+    color: var(--color-primary);
+}
+
+
+/*---------------------------------------
+  FEATURE
+-----------------------------------------*/
+
+.feature {
+    background: var(--dark-color);
+    padding: 5rem 0;
+}
+
+
+body{
+    width: 100%;
+    height: 100vh;
+    background: rgb(237, 237, 237);
+}
+header{
+    width: 100%;
+    display: flex;
+    background: var(--color-secondary);
+    padding-left: 20px;
+}
+.logo{
+    width: 60px;
+    padding: 10px;
+}
+.logo > img {
+    width: 100%;
+}
+.header-controls{
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+}
+.controls-1{
+    display: flex;
+    width: 28%;
+}
+.controls-1 > button , .controls-3 > button{
+    color: var(--color-light);
+    font-size: 18px;
+    padding: 0 15px;
+    padding-top: 5px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background: transparent;
+    border: none;
+    margin:2px 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: .5s;
+}
+.controls-1 > button > span , .controls-3 > button > span{
+    font-size: 11px;
+}
+.controls-1 > button:hover , .controls-3 > button:hover , #pr{
+    color: var(--color-secondary);
+    background: var(--color-light);
+}
+
+.controls-2{
+    display: flex;
+    width: 28%;
+    align-items: center;
+}
+.controls-3{
+    display: flex;
+    width: 28%;
+    justify-content: end;
+}
+
+select {
+    appearance: none;
+    outline: 10px red;
+    box-shadow: none;
+    flex: 1;
+    padding: 0 1em;
+    color: var(--color-light);
+    border: 2px solid var(--color-light);
+    background: transparent;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+select:focus,
+select:active {
+    color: var(--color-secondary);
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select {
+    position: relative;
+    display: flex;
+    width: 16em;
+    height: 3em;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    color: var(--color-light);
+    transition: .25s all ease;
+    pointer-events: none;
+}
+
+a {
+    font-weight: bold;
+    color: var(--gray);
+    text-decoration: drop-shadow;
+    padding: .25em;
+    border-radius: .50em;
+    background: pink;
+}
+
+.container {
+    position : absolute;
+    top: 50%;
+    left : 50%;
+    transform : translate(-50%,-50%);
+}
+
+.main{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: start;
+    padding: 20px;
+    justify-content: space-between;
+}
+.main-left{
+    width: 15%;
+    display: flex;
+    justify-content: end;
+}
+.main-left-menu{
+    width: 100px;
+    background: var(--color-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    border-radius: 10px;
+    position: relative;
+    padding: 5px;
+    padding-bottom: 20px;
+}
+.main-left-menu > button{
+    background: transparent;
+    font-size: 20px;
+    color: var(--dark-color);
+    padding: 10px 20px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main-left-menu > button > span{
+    font-size: 9px;
+    font-weight: 600;
+}
+.border-menu{
+    width: 90%;
+    height: 85px;
+    border: 2px solid var(--color-primary);
+    background: rgba(235, 25, 0, 0.3);
+    border-radius: 8px;
+    position: absolute;
+    top: 5px;
+}
+.main-right{
+    padding: 5px;
+    overflow: auto;
+    height: 500px;
+}
+.main-right-wrapper{
+    width: 95%;
+    overflow-y: auto;
+}
+.header-main{
+    width: 100%;
+    padding: 20px 20px 20px 0;
+    background: var(--color-light);
+    border-radius: 8px;
+}
+.header-main > h3 {
+    padding: 10px 30px;
+    color: var(--dark-color);
+    font-size: 18px;
+    font-weight: 600;
+}
+.project-info{
+    width: 95%;
+    margin: 5px auto;
+    display: flex;
+    justify-content: space-between;
+}
+.project-info-img{
+    width: 50%;
+    height: 300px;
+    background: url("../images/imgpp.jpg") no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+}

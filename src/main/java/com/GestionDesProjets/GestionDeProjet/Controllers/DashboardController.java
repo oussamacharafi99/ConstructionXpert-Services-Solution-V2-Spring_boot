@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Optional;
+
 
 @Controller
 public class DashboardController {
@@ -45,8 +47,24 @@ public class DashboardController {
         return "dashboard";
     }
     @RequestMapping("/addProject")
-    public String addProject(ch.qos.logback.core.model.Model model , Project project) {
+    public String addProject(Model model , Project project) {
         projectService.saveProject(project);
         return "redirect:/dashboard";
     }
+
+    ////
+
+    @GetMapping("/showProject")
+    public String showProject(@RequestParam("id") int id, Model model) {
+        Optional<Project> project = projectService.getProjectById(id);
+        model.addAttribute("project", project);
+        return "redirect:/dashProject";
+    }
+
+    @RequestMapping("/dashProject")
+    public String dashProject(Model model) {
+        model.addAttribute("projects", projectService.getAllProjectsForId());
+        return "dashProject";
+    }
+
 }
