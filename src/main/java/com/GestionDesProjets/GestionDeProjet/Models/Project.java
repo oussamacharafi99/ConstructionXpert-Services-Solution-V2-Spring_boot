@@ -26,23 +26,22 @@ public class Project {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "startDate")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate startDate;
+    @Column(name = "budget")
+    private double budget;
 
     @Column(name = "heurs")
     @DateTimeFormat(pattern = "HH:mm")
     private LocalTime heurs;
 
+    @Column(name = "startDate")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
+
     @Column(name = "endDate")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
-    @Column(name = "budget")
-    private double budget;
-    
+    @Column(name = "description")
+    private String description;
 
 }

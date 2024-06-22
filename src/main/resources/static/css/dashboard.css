@@ -57,6 +57,36 @@
     --darkgray: #2c3e50;
 }
 
+/*---------------------------------------
+   MODAL
+-----------------------------------------*/
+
+.modal-content {
+    padding: 2rem 3rem;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    border: 0;
+    padding: 0;
+}
+
+.membership-form a {
+    color: var(--color-primary);
+}
+
+
+/*---------------------------------------
+  FEATURE
+-----------------------------------------*/
+
+.feature {
+    background: var(--dark-color);
+    padding: 5rem 0;
+}
+
+
 body{
     width: 100%;
     height: 100vh;
@@ -119,20 +149,24 @@ header{
     justify-content: end;
 }
 
-
 select {
-    /* Reset Select */
     appearance: none;
     outline: 10px red;
     box-shadow: none;
-    /* Personalize */
     flex: 1;
     padding: 0 1em;
-    color: var(--dark-color);
+    color: var(--color-light);
     border: 2px solid var(--color-light);
     background: transparent;
     cursor: pointer;
+    border-radius: 12px;
 }
+
+select:focus,
+select:active {
+    color: var(--color-secondary);
+}
+
 select::-ms-expand {
     display: none;
 }
@@ -142,7 +176,7 @@ select::-ms-expand {
     display: flex;
     width: 16em;
     height: 3em;
-    border-radius: .25em;
+    border-radius: 12px;
     overflow: hidden;
 }
 
@@ -152,13 +186,9 @@ select::-ms-expand {
     top: 0;
     right: 0;
     padding: 1em;
-    background-color: var(--color-light);
+    color: var(--color-light);
     transition: .25s all ease;
     pointer-events: none;
-}
-
-.select:hover::after {
-    color: var(--color-primary);
 }
 
 a {
@@ -174,12 +204,12 @@ a {
     position : absolute;
     top: 50%;
     left : 50%;
-    transform :
-            translate(-50%,-50%);
+    transform : translate(-50%,-50%);
 }
+
 .main{
     width: 100%;
-    height: 100%;
+    height: 500px;
     display: flex;
     align-items: start;
     padding: 20px;
@@ -217,16 +247,20 @@ a {
 }
 .border-menu{
     width: 90%;
-    height: 80px;
+    height: 90px;
     border: 2px solid var(--color-primary);
     background: rgba(235, 25, 0, 0.3);
     border-radius: 8px;
     position: absolute;
-    bottom: 5px;
+    top: 5px;
 }
 .main-right{
-    width: 95%;
     padding: 5px;
+    overflow: auto;
+    height: 500px;
+}
+.main-right-wrapper{
+    width: 95%;
     overflow-y: auto;
 }
 .header-main{
@@ -314,10 +348,12 @@ a {
 }
 .all-projects{
     width: 100%;
-    height: 600px;
+    min-height: 1000px;
+    max-height: 1300px;
     background: var(--color-light);
     border-radius: 8px;
     margin: 5px auto;
+    position: relative;
 }
 .all-projects-header{
     padding: 10px 20px;
@@ -327,4 +363,111 @@ a {
 }
 .all-projects-header > p{
     padding-top: 5px;
+}
+.projects{
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    margin: 3px auto;
+}
+.card-project{
+    width: 32%;
+    border: 1px solid ;
+    margin: 5px;
+    border-radius: 8px;
+}
+.img-project{
+    width: 100%;
+    height: 220px;
+    background: url("../images/imgpp.jpg") no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+}
+.img-project > p{
+    font-size: 12px;
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 10px;
+}
+.img-project > p > span{
+    padding: 5px 10px ;
+    color: white;
+    border-radius: 3px;
+    background: rgba(23, 26, 29, 0.34);
+    backdrop-filter: blur(6px);
+    border-left: 8px solid var(--color-secondary);
+    margin: 2px;
+}
+.content-project{
+    padding: 20px;
+}
+.content-project > h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+.content-project > p{
+    font-size: 14px;
+    color: var(--dark-color);
+    font-weight: 400;
+    text-align: justify;
+}
+.pagination{
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pagination > li > a{
+    background: var(--gray-color);
+    padding: 7px;
+    margin: 2px;
+    color: var(--color-light);
+    text-decoration: none;
+    border-radius: 3px;
+    transition: .5s;
+}
+.pagination > li > a:hover{
+   background: var(--color-secondary);
+}
+.project_btn{
+    border: 2px solid var(--color-secondary);
+    border-radius: 8px;
+    padding: 5px;
+    background: transparent;
+    color: var(--color-secondary);
+    font-size: 8px;
+    cursor: pointer;
+    transition: .5s;
+}
+.project_btn:hover{
+    background: var(--color-secondary);
+    color: var(--color-light);
+}
+.project_btn > span{
+    padding-top: 5px;
+}
+#formAdd > input{
+    border: 2px solid var(--color-secondary);
+    border-radius: 8px;
+    padding: 25px 10px;
+    margin: 5px;
+}
+#formAdd > textarea {
+    border: 2px solid var(--color-secondary);
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+#formAdd > button{
+    color: var(--color-secondary);
+    padding: 5px 10px;
+    width: 50%;
+    margin: 0 auto;
 }

@@ -1,5 +1,7 @@
 package com.GestionDesProjets.GestionDeProjet.Controllers;
 
+import ch.qos.logback.core.model.Model;
+import com.GestionDesProjets.GestionDeProjet.Models.Project;
 import com.GestionDesProjets.GestionDeProjet.Services.ProjectService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,6 @@ public class ProjectController {
 
     @Autowired
     private ProjectService projectService;
-    @Autowired
-    private HttpSession httpSession;
 
     @RequestMapping("/")
     public String index() {
