@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Braah+One&family=Lexend:wght@100..900&family=Magra:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root{
-    --color-primary: #ffe100;
+    --color-primary: #9B0735;
     --color-light:#ffff;
-    --white-color:          #ffffff;
+    --color-secondary:#EB1900;
     --dark-color:           #171819;
     --about-bg-color:       #f9f9f9;
 
@@ -63,7 +64,7 @@ header{
     justify-content: space-between;
     background: black;
     align-items: center;
-    color: var(--color-primary);
+    color: var(--color-light);
     padding: 0 50px;
 }
 .contact1{
@@ -84,7 +85,7 @@ header{
 .contact1 > div > i {
     padding: 7px;
     color: #cac8b7;
-    border-left: 1px solid var(--color-primary);
+    border-left: 1px solid var(--color-secondary);
 }
 .login{
     display: flex;
@@ -93,7 +94,7 @@ header{
 }
 .login > a{
     padding: 7px 14px;
-    color: var(--color-primary);
+    color: var(--color-light);
     font-size: 17px;
     font-weight: 700;
     background: black;
@@ -111,7 +112,7 @@ header{
 .main{
     width: 100%;
     height: 700px;
-    background: url("https://i.ibb.co/sbWjbCD/Adobe-Stock-775963396.jpg") no-repeat;
+    background: url("images/t3.jpg") no-repeat;
     background-size: cover;
 }
 .header2{
@@ -128,7 +129,10 @@ header{
 .header-wrapper{
     width: 99%;
     height: 90%;
-    border: 8px solid #ffe100;
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 10px solid black;
+    backdrop-filter: blur(3px);
+    border-radius: 7px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -151,8 +155,9 @@ header{
     font-weight: 600;
     margin: 3px;
 }
-.list > ul > li > a:hover{
-    border-bottom: 5px solid var(--color-primary);
+.list > ul > li > a:hover , #a5{
+    color: var(--color-);
+    border-bottom: 5px solid var(--color-secondary);
 }
 .hero{
     width: 90%;
@@ -173,28 +178,32 @@ header{
 .carre{
     width: 50%;
     height: 80%;
-    border: 15px solid #ffe100;
+    border-radius: 8px;
     background: transparent;
     position: absolute;
     right: 0;
+    border: 2px solid var(--color-primary);
     animation: anime 2s ease-in-out infinite;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
 }
 .carre2{
     width: 70%;
     height: 50%;
-    border: 15px solid #ffe100;
     background: transparent;
     position: absolute;
     bottom: 0;
+    border: 2px solid var(--color-primary);
     animation: anime1 2s ease-in-out infinite;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
 }
 @keyframes anime {
     0% , 100%{
         transform: translateX(0);
-        border: 15px solid #ffe100;
+        border: 2px solid var(--color-primary);
     }
     50%{
-
+        border: 2px solid var(--color-primary);
         transform: translate(10px , -10px);
         background: #ffe10079;
     }
@@ -202,7 +211,6 @@ header{
 @keyframes anime1 {
     0% , 100%{
         transform: translateX(0);
-        border: 15px solid #ffe100;
     }
     50%{
         transform: translateY(10px);
@@ -211,6 +219,7 @@ header{
 swiper-container {
     width: 100%;
     height: 100%;
+    border-radius: 8px;
 }
 
 swiper-slide {
@@ -220,6 +229,7 @@ swiper-slide {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 8px;
 }
 
 swiper-slide img {
@@ -227,6 +237,7 @@ swiper-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 8px;
 }
 .left{
     padding-left: 50px;
@@ -234,21 +245,25 @@ swiper-slide img {
 .left > h1 {
     font-size: 60px;
     font-weight: 900;
-    text-shadow: 8px 12px 20px rgb(33, 33, 33);
+    color: var(--color-secondary);
 }
-em{
-    color: var(--color-primary);
+.left > h1 > em{
+    color: var(--color-light);
     background: black;
 }
 .left > p {
-    background: #ffe1003c;
+    background: rgba(0, 0, 0, 0.37);
     backdrop-filter: blur(10px);
     margin-top: 30px;
-    color: black;
+    color: var(--color-light);
     width: 80%;
     padding: 5px;
     font-size: 14px;
     border-radius: 5px;
+}
+.left > p > em{
+    color: var(--color-light);
+    background: black;
 }
 
 /* Services */
@@ -256,14 +271,15 @@ em{
     width: 100%;
     height: 500px;
     text-align: center;
+    padding-top: 20px;
 }
 .Service > h1 {
-    font-size: 60px;
+    font-size: 45px;
     font-weight: 900;
     text-shadow: 8px 12px 20px rgb(33, 33, 33);
 }
-em{
-    color: var(--color-primary);
+.Service > h1 > em{
+    color: var(--color-light);
     background: black;
 }
 .service-wrapper{
@@ -329,6 +345,9 @@ em{
     text-align: left;
     padding: 10px 20px;
 }
+.mini-card > h1{
+    font-size: 1.5rem;
+}
 .mini-card > p {
     font-size: 30px;
     font-weight: 100;
@@ -386,57 +405,79 @@ em{
 .About > h1 {
     font-size: 60px;
     font-weight: 900;
-    text-shadow: 8px 12px 20px rgb(33, 33, 33);
 }
-em{
-    color: var(--color-primary);
+.About > h1 >em{
+    color: var(--color-secondary);
     background: black;
 }
 
 /* About */
-.About{
+.About {
     width: 100%;
-    height: 600px;
+    height: 800px;
     text-align: center;
     background: black;
+    padding-top: 20px;
+}
+@media screen and (max-width: 800px) {
+    .About {
+        width: 100%;
+        height: 800px;
+        text-align: center;
+        background: black;
+        overflow-y: auto;
+    }
 }
 .About > h1 {
     font-size: 40px;
     font-weight: 300;
     text-shadow: 8px 12px 20px rgb(33, 33, 33);
-    color: var(--color-primary);
+    color: var(--color-secondary);
 }
 .About > h1 > em{
-    color: black;
-    background: var(--color-primary);
+    color: var(--color-light);
+    background: var(--color-secondary);
     font-weight: 900;
 }
 .about-wrapper{
     margin: 0 auto;
     width: 90%;
     height: 100%;
+    padding: 10px;
+}
+.about-content{
+    width: 90%;
+    margin: 10px auto;
+}
+.about-content > h3 {
+    font-size: 17px;
+    color: white;
+}
+.about-content > p {
+    font-size: 12px;
+    color: #b8b7b7;
+}
+.cards-about{
     display: flex;
-    padding: 10px 40px ;
-    justify-content: space-between;
-    margin-top: 20px;
-    position: relative;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
 }
-.SP{
-    width: 700px;
-    height: 400px;
-    border-radius: 3px;
-    position: absolute;
-    left: 150px;
+.cards-about > .card{
+    height: 270px;
+    margin: 3px;
+    padding: 20px;
+    flex: 1 32%;
 }
-.content2{
-    width: 300px;
-    height: 400px;
-    background: white;
-    position: absolute;
-    right: 50px;
-    top: 100px;
-    border-radius: 3px;
+.cards-about > .card > h2 {
+    font-size: 15px;
 }
+.cards-about > .card > p {
+    font-size: 11px;
+    text-align: justify;
+}
+
+
 
 
 
@@ -498,14 +539,14 @@ button#submit-button:hover {
     margin: 15px 10px;
 }
 #contact > h1 > em{
-    color: black;
-    background: var(--color-primary);
+    color: var(--color-light);
+    background: var(--color-secondary);
     font-weight: 900;
     padding: 5px;
 }
 .contact{
     width: 100%;
-    padding: 20px;
+    padding-top: 20px;
 }
 .contact > div{
     display: flex;
