@@ -130,7 +130,7 @@ header{
     width: 99%;
     height: 90%;
     background: rgba(0, 0, 0, 0.2);
-    border-left: 10px solid black;
+    border-left: 14px solid var(--color-light);
     backdrop-filter: blur(3px);
     border-radius: 7px;
     display: flex;
@@ -150,13 +150,13 @@ header{
 .list > ul > li > a{
     padding:10px;
     text-decoration: none;
-    color: var(--color-light);
+    color: #dddddd;
     font-size: 17px;
     font-weight: 600;
     margin: 3px;
 }
 .list > ul > li > a:hover , #a5{
-    color: var(--color-);
+    color: var(--color-light);
     border-bottom: 5px solid var(--color-secondary);
 }
 .hero{

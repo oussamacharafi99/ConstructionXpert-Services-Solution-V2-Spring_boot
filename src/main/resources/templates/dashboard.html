@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="" width="100%"/>
+    </div>
+    <div class="header-controls">
+            <div class="controls-1">
+                <button class="project">
+                    <i class="bi bi-kanban"></i>
+                    <span>Project</span>
+                </button>
+                <button class="tasks">
+                    <i class="bi bi-list-task"></i>
+                    <span>Task</span>
+                </button>
+                <button class="resources">
+                    <i class="bi bi-archive"></i>
+                    <span>Resource</span>
+                </button>
+            </div>
+            <div class="controls-2">
+                <div class="select">
+                    <select id="mySelect" onchange="location = this.value;">
+                        <option value="">Select Project ...</option>
+                        <th:block th:each="project : ${projects}">
+                            <option th:value="@{'/ViewProject?id=' + ${project.id}}" th:text="${project.name}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+        <div class="controls-3">
+            <button class="profile"><i class="bi bi-person-circle"></i><span>Profile</span></button>
+            <button class="notification"><i class="bi bi-bell"></i><span>Notifs</span></button>
+        </div>
+
+    </div>
+</header>
+<section class="main">
+    <div class="main-left">
+        <div class="main-left-menu">
+            <button class="project-menu"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
+            <button class="tasks-menu"><i class="bi bi-list-task"></i><span>Our Tasks</span></button>
+            <div class="border-menu"></div>
+        </div>
+    </div>
+    <div class="main-right">
+        <div class="header-main">
+            <h2>My Projects</h2>
+            <div class="user-main">
+                <div class="pic-user"><img src="images/t4.jpg" alt=""/></div>
+                <p> <span>oussama charafi</span> ,here you will find all the projects <br>
+                    assigned to you</p>
+            </div>
+        </div>
+
+        <div class="search-main">
+            <form>
+                <div class="group">
+                    <label for="searchByName"> Search</label><br>
+                    <input type="text" id="searchByName" name="search" placeholder="Search By name"/>
+                </div>
+                <button id="btn-search"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+
+
+        <div class="all-projects">
+            <div class="all-projects-header">
+                <p>16 Projects </p>
+                <div class="controls-2">
+                    <div class="select">
+                        <select id="mySelect" onchange="location = this.value;">
+                            <option value="">Select Project ...</option>
+                            <th:block th:each="project : ${projects}">
+                                <option th:value="@{'/ViewProject?id=' + ${project.id}}" th:text="${project.name}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- SCRIPTS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>
