@@ -52,8 +52,8 @@
         <div class="main-left-menu">
             <button class="project-menu" onclick="scrolling(0 , 10)"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
             <button class="project-calendar" onclick="scrolling(430 , 95)"><i class="bi bi-calendar-week"></i><span>Calendar</span></button>
-            <button class="project-menu" onclick="scrolling(1200 ,170)"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
-            <button class="project-menu" onclick="scrolling(value1, value2)"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
+            <button class="project-menu" onclick="scrolling(1200 ,170)"><i class="bi bi-list-task"></i><span>Our Projects</span></button>
+            <button class="project-menu" onclick="scrolling(1800 ,265)"><i class="bi bi-hammer"></i><span>Our Projects</span></button>
             <div class="border-menu"></div>
         </div>
     </div>
@@ -78,9 +78,14 @@
                                 <h5 class="project-end-date" th:text="${Oneproject.endDate}"></h5>
                             </div>
                         </div>
-                        <div class="">
-                            <button id="deleteProject" data-toggle="modal" data-target="#deleteForm">Delete</button>
-                            <button id="updateProject" data-toggle="modal" data-target="#updateForm">Update</button>
+                        <div class="project-content-bottom">
+                            <div>
+                                <button id="deleteProject" data-toggle="modal" data-target="#deleteForm">Delete</button>
+                                <button id="updateProject" data-toggle="modal" data-target="#updateForm">Update</button>
+                            </div>
+                            <div>
+                                <h3 class="budget" th:text="${Oneproject.budget} + ' $'"></h3>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -96,12 +101,12 @@
             <div class="task-main mt-5">
                 <div class="task-title-controls">
                     <h3>My Project tasks</h3>
-                    <button class="addTask">Add Task</button>
+                    <button class="addTask" data-toggle="modal" data-target="#AddTaskForm">Add Task</button>
                 </div>
                 <div class="task-card-wrapper">
                     <div class="task-card" th:each="task : ${tasks}">
                         <h4 th:text="${task.description}">Task description</h4>
-                        <span th:text="${task.status}">Status</span>
+                        <span id="status" th:text="${task.status}">Status</span>
                         <div class="task-card-content">
                             <h5 th:text="${task.heurs}">Time</h5>
                             <span>--- </span>
@@ -114,8 +119,30 @@
                 </div>
             </div>
 
-        </div>
 
+            <div class="Resource-main mt-5">
+                <div class="Resource-title-controls">
+                    <h3>My Tasks resource</h3>
+                    <button class="addTask" data-toggle="modal" data-target="#AddResourcekForm">Add resource</button>
+                </div>
+
+                <div class="resource-card-wrapper">
+                    <div class="resource-card"th:each="res : ${resources}">
+
+                        <div class="task-card-content">
+                            <h5 th:text="${res.heurs}">Time</h5>
+                            <span>--- </span>
+                            <h4 th:text="${res.startDate}">Start Date</h4>
+                            <i class="bi bi-calendar-week"></i>
+                        </div>
+                        <button class="deleteRes" th:value="${res.id}" data-toggle="modal" data-target="#deleteTaskForm"><i class="bi bi-x-octagon"></i></button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </div>
 </section>
 
@@ -160,11 +187,7 @@
         </div>
     </div>
 </div>
-
-
-
 <!-- popup update-->
-
 <div class="modal fade" id="updateForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
 
@@ -194,7 +217,7 @@
 
                     <input type="date" class="form-control" name="endDate" th:value="${Oneproject.endDate}" required>
 
-                    <textarea class="form-control" rows="3" name="description" th:text="${Oneproject.description}" placeholder="Write your goal for this exercise program"></textarea>
+                    <textarea class="form-control" rows="3" name="description" th:text="${Oneproject.description}" placeholder="Update your Project Description"></textarea>
 
                     <button type="submit" class="form-control" id="submit-button" name="submit">Update Button</button>
                 </form>
@@ -202,10 +225,49 @@
         </div>
     </div>
 </div>
+<!-- Add Task -->
+<div class="modal fade" id="AddTaskForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h2 class="modal-title" id="membershipFormLabel">add task</h2>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form class="membership-form webform" role="form" action="/AddTask" method="POST" id="formAdd">
 
 
+
+                    <input type="hidden" class="form-control" name="projectId" placeholder="Project id" th:value="${Oneproject.id}">
+
+                    <input type="time" class="form-control" name="heurs" required>
+
+                    <input type="date" class="form-control" name="startDate" required>
+
+                    <input type="date" class="form-control" name="endDate" required>
+
+                    <select class="custom-select" id="inputGroupSelect01" name="status" required>
+                        <option value="" disabled selected>Choose...</option>
+                        <option value="To Do">To Do</option>
+                        <option value="Completed">Completed</option>
+                        <option value="In Progress">In Progress</option>
+                    </select>
+
+                    <textarea class="form-control" rows="3" name="description" placeholder="Description Task"></textarea>
+                    <button type="submit" class="form-control" id="submit-button" name="submit">Update Button</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 <!-- SCRIPTS -->
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         fetch('/project')

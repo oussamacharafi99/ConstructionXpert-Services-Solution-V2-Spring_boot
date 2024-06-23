@@ -465,11 +465,10 @@ select::-ms-expand {
     display: flex;
     flex-wrap: wrap;
     margin: 5px auto;
-    justify-content: space-between;
 }
 .task-card{
     width: 32%;
-    margin: 5px 3px;
+    margin: 5px 6px;
     padding: 7px;
     border-radius: 7px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.19);
@@ -489,7 +488,6 @@ select::-ms-expand {
     font-weight: 700;
     padding: 4px;
     margin-left: 15px;
-    background: greenyellow;
     border-radius: 6px;
 }
 .task-card-content{
@@ -525,4 +523,53 @@ select::-ms-expand {
 }
 .deleteTask:hover{
     transform: scale(1.2);
+}
+#inputGroupSelect01{
+
+}
+.project-content-bottom{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.project-content-bottom > div{
+    display: flex;
+}
+.project-content-bottom > div > h3{
+    padding-top: 10px;
+}
+
+.Resource-main{
+    width: 100%;
+    padding: 20px 20px 20px 0;
+    background: var(--color-light);
+    border-radius: 8px;
+}
+.Resource-main > .Resource-title-controls{
+    display: flex;
+    padding: 3px 20px;
+    justify-content: space-between;
+}
+.Resource-main > .Resource-title-controls > button{
+    border: 2px solid var(--darkgray);
+    padding: 5px 10px;
+    text-decoration: none;
+    color: var(--color-light);
+    transition: .5s;
+    background: var(--darkgray);
+    margin: 5px 3px ;
+    cursor: pointer;
+    outline: none;
+    border-radius: 4px;
+}
+.Resource-main > .Resource-title-controls > button:hover{
+    background: #4e677e;
+    color: var(--white);
+}
+.Resource-main > .Resource-title-controls > h3{
+    padding: 10px;
+    color: var(--dark-color);
+    font-size: 18px;
+    font-weight: 600;
 }

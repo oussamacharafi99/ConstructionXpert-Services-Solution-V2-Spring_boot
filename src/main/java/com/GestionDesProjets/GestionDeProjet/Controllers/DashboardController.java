@@ -78,7 +78,8 @@ public class DashboardController {
         model.addAttribute("projects", projectService.getAllProjectsForId());
         List<Task> tasks = taskService.getTaskByProjectId(id);
         model.addAttribute("tasks", tasks);
-
+        int idTask = tasks.get(0).getId();
+        model.addAttribute("resources" , resourceService.findAllResourceByIdTask(idTask));
         return "dashProject";
     }
 
@@ -88,16 +89,27 @@ public class DashboardController {
         return "redirect:/dashboard";
     }
 
-//    @RequestMapping("/dashProject")
-//    public String dashProject(Model model) {
-//        return "dashProject";
-//    }
 
 
     //////task zone /////
     @GetMapping("/DeleteTask")
     public String deleteTask(@RequestParam("id") int taskId, @RequestParam("idP") int projectId, Model model) {
         taskService.deleteTask(taskId);
+        return "redirect:/showProject?id=" + projectId;
+    }
+
+//    @PostMapping("/AddTask")
+//    public String addTask(@ModelAttribute Task task, @RequestParam("projectId") int projectId, Model model) {
+//        taskService.saveTask(task);
+//        Project project = projectService.getProjectById(projectId);
+//        model.addAttribute("Oneproject", project);
+//        List<Task> tasks = taskService.getTaskByProjectId(projectId);
+//        model.addAttribute("tasks", tasks);
+//        return "dashProject";
+//    }
+    @PostMapping("/AddTask")
+    public String addTask(@ModelAttribute Task task, @RequestParam("projectId") int projectId, Model model) {
+        taskService.saveTask(task);
         return "redirect:/showProject?id=" + projectId;
     }
 

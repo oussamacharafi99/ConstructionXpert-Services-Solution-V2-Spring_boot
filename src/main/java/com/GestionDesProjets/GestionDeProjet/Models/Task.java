@@ -24,16 +24,15 @@ public class Task {
     @Column(name = "project_id")
     private int projectId;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "heurs")
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime heurs;
 
     @Column(name = "startDate")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
-    @Column(name = "heurs")
-    @DateTimeFormat(pattern = "HH:mm")
-    private LocalTime heurs;
+
 
     @Column(name = "endDate")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -41,4 +40,7 @@ public class Task {
 
     @Column(name = "status")
     private String status;
+
+    @Column(name = "description")
+    private String description;
 }

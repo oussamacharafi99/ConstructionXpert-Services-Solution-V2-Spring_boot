@@ -4,6 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Setter
 @Getter
@@ -25,6 +29,13 @@ public class Resource {
     @Column(name = "type")
     private String type;
 
+    @Column(name = "heurs")
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime heurs;
+
+    @Column(name = "startDate")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
 
 
 }

@@ -27,9 +27,6 @@
   });
 
 
-const add_project = document.querySelector(".project");
-
-
   function scrolling(value1, value2) {
     const projectView = document.querySelector('.main-right');
     const menu = document.querySelector('.border-menu');
@@ -53,3 +50,23 @@ const add_project = document.querySelector(".project");
     });
   });
 
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const statuses = document.querySelectorAll("#status");
+
+    statuses.forEach(function(status) {
+      switch (status.textContent.trim().toLowerCase()) {
+        case "to do":
+          status.style.background = "#00c3ff";
+          break;
+        case "in progress":
+          status.style.background = "#76ff8b";
+          break;
+        case "completed":
+          status.style.background = "#ff0000";
+          break;
+        default:
+          status.style.background = "#ffffff"; // Default color if none match
+      }
+    });
+  });
