@@ -14,8 +14,8 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-    public Optional<Task> getTaskByProjectId(Integer projectId) {
-        return taskRepository.findById(projectId);
+    public List<Task> getTaskByProjectId(Integer projectId) {
+        return taskRepository.getTaskByProjectId(projectId);
     }
 
     public List<Task> getAllTasks() {
@@ -26,7 +26,7 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public void deleteTask(Task task) {
-        taskRepository.delete(task);
+    public void deleteTask(Integer id) {
+        taskRepository.deleteById(id);
     }
 }

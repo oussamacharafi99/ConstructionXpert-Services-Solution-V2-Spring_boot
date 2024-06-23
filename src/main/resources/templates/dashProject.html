@@ -50,10 +50,10 @@
 <section class="main">
     <div class="main-left">
         <div class="main-left-menu">
-            <button class="project-menu"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
-            <button class="project-calendar"><i class="bi bi-calendar-week"></i><span>Calendar</span></button>
-            <button class="project-menu"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
-            <button class="project-menu"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
+            <button class="project-menu" onclick="scrolling(0 , 10)"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
+            <button class="project-calendar" onclick="scrolling(430 , 95)"><i class="bi bi-calendar-week"></i><span>Calendar</span></button>
+            <button class="project-menu" onclick="scrolling(1200 ,170)"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
+            <button class="project-menu" onclick="scrolling(value1, value2)"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
             <div class="border-menu"></div>
         </div>
     </div>
@@ -92,12 +92,34 @@
                     <div id='calendar' style="width: 90%; height: 390px" ></div>
                 </div>
             </div>
+
+            <div class="task-main mt-5">
+                <div class="task-title-controls">
+                    <h3>My Project tasks</h3>
+                    <button class="addTask">Add Task</button>
+                </div>
+                <div class="task-card-wrapper">
+                    <div class="task-card" th:each="task : ${tasks}">
+                        <h4 th:text="${task.description}">Task description</h4>
+                        <span th:text="${task.status}">Status</span>
+                        <div class="task-card-content">
+                            <h5 th:text="${task.heurs}">Time</h5>
+                            <span>--- </span>
+                            <h4 th:text="${task.startDate}">Start Date</h4>
+                            <i class="bi bi-calendar-week"></i>
+                            <h4 th:text="${task.endDate}">End Date</h4>
+                        </div>
+                        <button class="deleteTask" th:value="${task.id}" data-toggle="modal" data-target="#deleteTaskForm"><i class="bi bi-x-octagon"></i></button>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>
 </section>
 
-<!-- Modal -->
+<!-- Modal delete project-->
 <div class="modal fade" id="deleteForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
 
@@ -112,11 +134,34 @@
             </div>
 
             <div class="modal-body">
-                <a th:href="@{'/DeleteProject?id=' + ${Oneproject.id}}" id="deleteSure">Delete</a>
+                <a href="" id="deleteSure">Delete</a>
             </div>
         </div>
     </div>
 </div>
+<!-- Modal delete task-->
+<div class="modal fade" id="deleteTaskForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="membershipFormLabel">Are you sure you want to delete ?</h4>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden" value="" id="" />
+                <a class="deleteTaskSure" th:href="" id="deleteSure">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <!-- popup update-->
 
@@ -173,7 +218,7 @@
                             title: project.name,
                             start: new Date(project.startDate),
                             end: new Date(project.endDate),
-                            backgroundColor: '#EB1900'  // Optional, overridden by CSS
+                            backgroundColor: '#EB1900'
                         };
                     });
 

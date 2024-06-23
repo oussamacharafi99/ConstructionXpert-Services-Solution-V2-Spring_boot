@@ -1,6 +1,7 @@
 package com.GestionDesProjets.GestionDeProjet.Controllers;
 
 import com.GestionDesProjets.GestionDeProjet.Models.Project;
+import com.GestionDesProjets.GestionDeProjet.Models.Task;
 import com.GestionDesProjets.GestionDeProjet.Services.ProjectService;
 import com.GestionDesProjets.GestionDeProjet.Services.ResourceService;
 import com.GestionDesProjets.GestionDeProjet.Services.TaskService;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
@@ -72,6 +74,8 @@ public class DashboardController {
         Project project = projectService.getProjectById(id);
         model.addAttribute("Oneproject", project);
         model.addAttribute("projects", projectService.getAllProjectsForId());
+        List<Task> tasks = taskService.getTaskByProjectId(id);
+        model.addAttribute("tasks", tasks);
         return "dashProject";
     }
 
@@ -85,5 +89,13 @@ public class DashboardController {
 //    public String dashProject(Model model) {
 //        return "dashProject";
 //    }
+
+
+    //////task zone /////
+    @GetMapping("/DeleteTask")
+    public String deleteTask(@RequestParam("id") int id, Model model) {
+        taskService.deleteTask(id);
+        return "redirect:/showProject";
+    }
 
 }
