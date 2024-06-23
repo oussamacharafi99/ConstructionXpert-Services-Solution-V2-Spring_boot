@@ -71,11 +71,14 @@ public class DashboardController {
 
     @GetMapping("/showProject")
     public String showProject(@RequestParam("id") int id, Model model) {
+
         Project project = projectService.getProjectById(id);
+
         model.addAttribute("Oneproject", project);
         model.addAttribute("projects", projectService.getAllProjectsForId());
         List<Task> tasks = taskService.getTaskByProjectId(id);
         model.addAttribute("tasks", tasks);
+
         return "dashProject";
     }
 
@@ -93,9 +96,10 @@ public class DashboardController {
 
     //////task zone /////
     @GetMapping("/DeleteTask")
-    public String deleteTask(@RequestParam("id") int id, Model model) {
-        taskService.deleteTask(id);
-        return "redirect:/showProject";
+    public String deleteTask(@RequestParam("id") int taskId, @RequestParam("idP") int projectId, Model model) {
+        taskService.deleteTask(taskId);
+        return "redirect:/showProject?id=" + projectId;
     }
 
 }
+

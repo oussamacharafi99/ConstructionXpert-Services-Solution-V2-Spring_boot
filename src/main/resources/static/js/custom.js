@@ -42,12 +42,13 @@ const add_project = document.querySelector(".project");
 
   document.addEventListener("DOMContentLoaded", function () {
     const cardTasks = document.querySelectorAll(".task-card");
-
+    const  idP = document.getElementById("idP");
     cardTasks.forEach(card => {
       const btnDeleteTask = card.querySelector(".deleteTask");
       btnDeleteTask.addEventListener("click", () => {
         const taskId = btnDeleteTask.getAttribute("value");
-        document.querySelector(".deleteTaskSure").href = `/DeleteTask?id=${taskId}`;
+        const projectId = idP.value;
+        document.querySelector(".deleteTaskSure").href = `/DeleteTask?id=${taskId}&idP=${projectId}`;
       });
     });
   });

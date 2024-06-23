@@ -134,7 +134,7 @@
             </div>
 
             <div class="modal-body">
-                <a href="" id="deleteSure">Delete</a>
+                <a th:href="@{'/DeleteProject?id=' + ${Oneproject.id}}" id="deleteSure">Delete</a>
             </div>
         </div>
     </div>
@@ -154,8 +154,8 @@
             </div>
 
             <div class="modal-body">
-                <input type="hidden" value="" id="" />
-                <a class="deleteTaskSure" th:href="" id="deleteSure">Delete</a>
+                <input type="hidden" th:value="${Oneproject.id}" id="idP" />
+                <a class="deleteTaskSure" href="" id="deleteSuree">Delete</a>
             </div>
         </div>
     </div>
