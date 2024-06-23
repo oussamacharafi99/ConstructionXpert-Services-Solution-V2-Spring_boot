@@ -19,12 +19,13 @@ public class ProjectService {
     public Page<Project> getAllProjects(Pageable pageable) {
         return projectRepository.findAll(pageable);
     }
+
     public List<Project> getAllProjectsForId() {
         return projectRepository.findAll();
     }
 
-    public Optional<Project> getProjectById(Integer id) {
-        return projectRepository.findById(id);
+    public Project getProjectById(Integer id) {
+        return projectRepository.findProjectBy(id);
     }
 
     public Project saveProject(Project project) {
@@ -33,5 +34,9 @@ public class ProjectService {
 
     public void deleteProject(Integer id) {
         projectRepository.deleteById(id);
+    }
+
+    public Project updateProject(Integer id, Project project) {
+        return projectRepository.save(project);
     }
 }

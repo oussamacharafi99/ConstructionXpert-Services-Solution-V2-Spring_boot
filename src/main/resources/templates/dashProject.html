@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/aos.css">
@@ -49,7 +51,7 @@
     <div class="main-left">
         <div class="main-left-menu">
             <button class="project-menu"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
-            <button class="project-menu"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
+            <button class="project-calendar"><i class="bi bi-calendar-week"></i><span>Calendar</span></button>
             <button class="project-menu"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
             <button class="project-menu"><i class="bi bi-kanban"></i><span>Our Projects</span></button>
             <div class="border-menu"></div>
@@ -61,25 +63,148 @@
             <div class="header-main">
                 <h3>My Project</h3>
                 <div class="project-info">
-                    <div class="project-info-img">
-
-                    </div>
+                    <div class="project-info-img"></div>
                     <div class="project-info-content">
-                        <h2 class="project-title"></h2>
-                        <p class="project-description"></p>
+                        <h2 class="project-title" th:text="${Oneproject.name}"></h2>
+                        <p class="project-description" th:text="${Oneproject.description}"></p>
                         <div class="project-dates">
-                            <h5 class="project-time"></h5>
-                            <h5 class="project-start-date"></h5>
-                            <h5 class="project-end-date"></h5>
+                            <span>
+                                <i class="bi bi-clock-history"></i>
+                                <p class="project-time" th:text="${Oneproject.heurs}"></p>
+                            </span>
+                            <div>
+                                <h5 class="project-start-date" th:text="${Oneproject.startDate}"></h5>
+                                 <i class="bi bi-calendar-week"></i>
+                                <h5 class="project-end-date" th:text="${Oneproject.endDate}"></h5>
+                            </div>
+                        </div>
+                        <div class="">
+                            <button id="deleteProject" data-toggle="modal" data-target="#deleteForm">Delete</button>
+                            <button id="updateProject" data-toggle="modal" data-target="#updateForm">Update</button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="calendar-main mt-5">
+                <h3>Calendar</h3>
+                <div class="calendar-wrapper">
+                    <div id='calendar' style="width: 90%; height: 390px" ></div>
+                </div>
+            </div>
         </div>
+
     </div>
 </section>
 
+<!-- Modal -->
+<div class="modal fade" id="deleteForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="membershipFormLabel">Are you sure you want to delete ?</h4>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <a th:href="@{'/DeleteProject?id=' + ${Oneproject.id}}" id="deleteSure">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- popup update-->
+
+<div class="modal fade" id="updateForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h2 class="modal-title" id="membershipFormLabel">Update Project</h2>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form class="membership-form webform" role="form" action="UdateProject" method="POST" id="formAdd">
+                    <input type="hidden" class="form-control" name="id" placeholder="user id" th:value="${Oneproject.id}">
+
+                    <input type="hidden" class="form-control" name="user_id" placeholder="user id" value="1">
+
+                    <input type="text" class="form-control" name="name" placeholder="Project Name" th:value="${Oneproject.name}" required>
+
+                    <input type="number" class="form-control" name="budget" placeholder="Project budget" th:value="${Oneproject.budget}" required>
+
+                    <input type="time" class="form-control" name="heurs" th:value="${Oneproject.heurs}" required>
+
+                    <input type="date" class="form-control" name="startDate" th:value="${Oneproject.startDate}" required>
+
+                    <input type="date" class="form-control" name="endDate" th:value="${Oneproject.endDate}" required>
+
+                    <textarea class="form-control" rows="3" name="description" th:text="${Oneproject.description}" placeholder="Write your goal for this exercise program"></textarea>
+
+                    <button type="submit" class="form-control" id="submit-button" name="submit">Update Button</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- SCRIPTS -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('/project')
+            .then(response => response.json())
+            .then(data => {
+                if (Array.isArray(data)) {
+                    let events = data.map(project => {
+                        return {
+                            id: project.id,
+                            title: project.name,
+                            start: new Date(project.startDate),
+                            end: new Date(project.endDate),
+                            backgroundColor: '#EB1900'  // Optional, overridden by CSS
+                        };
+                    });
+
+                    var calendarEl = document.getElementById('calendar');
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
+                        headerToolbar: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                        },
+                        events: events,
+                        eventDidMount: function(info) {
+                            info.el.style.backgroundColor = info.event.extendedProps.backgroundColor;
+                        },
+                        eventClick: function(info) {
+                            alert('Event: ' + info.event.title);
+                            info.jsEvent.preventDefault();
+                        }
+                    });
+
+                    calendar.render();
+                } else {
+                    console.error('Data is not in array format');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    });
+</script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/aos.js"></script>

@@ -8,13 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 
 @Controller
@@ -29,6 +31,11 @@ public class DashboardController {
     @Autowired
     private ResourceService resourceService;
 
+
+    @RequestMapping("/")
+    public String index() {
+        return "index";
+    }
 
     @GetMapping("/dashboard")
     public String dashboard(
@@ -51,20 +58,32 @@ public class DashboardController {
         projectService.saveProject(project);
         return "redirect:/dashboard";
     }
+    @PostMapping("/UdateProject")
+    public String updateProject(Model model, Project project) {
+        model.addAttribute("project", project);
+        projectService.updateProject(project.getId(), project);
+        return "redirect:/dashboard";
+    }
 
     ////
 
     @GetMapping("/showProject")
     public String showProject(@RequestParam("id") int id, Model model) {
-        Optional<Project> project = projectService.getProjectById(id);
-        model.addAttribute("project", project);
-        return "redirect:/dashProject";
-    }
-
-    @RequestMapping("/dashProject")
-    public String dashProject(Model model) {
+        Project project = projectService.getProjectById(id);
+        model.addAttribute("Oneproject", project);
         model.addAttribute("projects", projectService.getAllProjectsForId());
         return "dashProject";
     }
+
+    @GetMapping("/DeleteProject")
+    public String deleteProject(@RequestParam("id") int id, Model model) {
+        projectService.deleteProject(id);
+        return "redirect:/dashboard";
+    }
+
+//    @RequestMapping("/dashProject")
+//    public String dashProject(Model model) {
+//        return "dashProject";
+//    }
 
 }

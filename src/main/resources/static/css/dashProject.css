@@ -7,6 +7,10 @@
     --dark-color:           #171819;
     --about-bg-color:       #f9f9f9;
 
+    --color-light: #f9f9f9;
+    --dark-color: #333;
+    --event-color: rgba(235, 25, 0, 0.27);
+
     --gray-color:           #909090;
     --link-color:           #404040;
     --p-color:              #666262;
@@ -55,6 +59,10 @@
 :root {
     --gray: #34495e;
     --darkgray: #2c3e50;
+}
+
+button:focus{
+    outline: none;
 }
 
 /*---------------------------------------
@@ -118,7 +126,6 @@ header{
     color: var(--color-light);
     font-size: 18px;
     padding: 0 15px;
-    padding-top: 5px;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
     background: transparent;
@@ -191,15 +198,6 @@ select::-ms-expand {
     pointer-events: none;
 }
 
-a {
-    font-weight: bold;
-    color: var(--gray);
-    text-decoration: drop-shadow;
-    padding: .25em;
-    border-radius: .50em;
-    background: pink;
-}
-
 .container {
     position : absolute;
     top: 50%;
@@ -235,7 +233,7 @@ a {
     background: transparent;
     font-size: 20px;
     color: var(--dark-color);
-    padding: 10px 20px;
+    padding: 15px 20px;
     border: none;
     display: flex;
     flex-direction: column;
@@ -247,12 +245,12 @@ a {
 }
 .border-menu{
     width: 90%;
-    height: 85px;
+    height: 75px;
     border: 2px solid var(--color-primary);
     background: rgba(235, 25, 0, 0.3);
     border-radius: 8px;
     position: absolute;
-    top: 5px;
+    top: 10px;
 }
 .main-right{
     padding: 5px;
@@ -287,4 +285,145 @@ a {
     background: url("../images/imgpp.jpg") no-repeat;
     background-size: cover;
     border-radius: 8px;
+}
+.project-info-content{
+    width: 48%;
+    padding: 20px;
+}
+.project-info-content > h2{
+    font-size: 16px;
+    color: var(--color-secondary);
+    font-weight: 700;
+}
+.project-info-content > p {
+    font-size: 12px;
+    font-weight: 400;
+    text-align: justify;
+    height: 100px;
+    overflow-y: auto;
+}
+.project-dates {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.project-dates > span{
+    width: 100px;
+    display: flex;
+    padding-top: 10px;
+}
+.project-dates > span > p{
+    color: black;
+    padding-top: 3px;
+    font-weight: 700;
+}
+.project-dates > span > i{
+    color: var(--color-secondary);
+    margin-right: 5px;
+}
+.project-dates > div{
+    display: flex;
+    align-items: center;
+}
+.project-dates > div > h5{
+    color: var(--color-light);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 3px;
+    background: var(--darkgray);
+    margin: 3px;
+}
+.project-dates > div > i {
+    margin: 0 5px;
+}
+#deleteSure , #deleteProject{
+    border: 2px solid var(--color-secondary);
+    padding: 5px 10px;
+    text-decoration: none;
+    color: var(--color-secondary);
+    transition: .5s;
+    background: var(--color-light);
+    margin: 5px 3px ;
+    cursor: pointer;
+    outline: none;
+    border-radius: 4px;
+}
+#updateProject{
+    border: 2px solid var(--darkgray);
+    padding: 5px 10px;
+    text-decoration: none;
+    color: var(--color-light);
+    transition: .5s;
+    background: var(--darkgray);
+    margin: 5px 3px ;
+    cursor: pointer;
+    outline: none;
+    border-radius: 4px;
+}
+
+#deleteSure:hover , #deleteProject:hover{
+    background: rgba(213, 0, 63, 0.27);
+    color: var(--dark-color);
+}
+#updateProject:hover{
+    background: #4e677e;
+    color: var(--white);
+}
+.modal-title{
+    font-size: 14px;
+    padding: 20px 0 ;
+}
+
+/**/
+.calendar-main{
+    width: 100%;
+    padding: 20px 20px 20px 0;
+    background: var(--color-light);
+    border-radius: 8px;
+}
+.calendar-main > h3 {
+    padding: 10px 30px;
+    color: var(--dark-color);
+    font-size: 18px;
+    font-weight: 600;
+}
+.calendar-wrapper {
+    width: 95%;
+    height: 550px;
+    margin: 5px auto;
+}
+#calendar{
+    margin: 0 auto;
+    height: 90vh;
+}
+.fc-event {
+    background-color: var(--event-color) !important;
+    border: none !important;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.fc-daygrid-event-dot {
+    border-color: var(--event-color) !important;
+}
+#formAdd > input{
+    border: 2px solid var(--color-secondary);
+    border-radius: 8px;
+    padding: 25px 10px;
+    margin: 5px;
+}
+#formAdd > textarea {
+    border: 2px solid var(--color-secondary);
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+#formAdd > button{
+    color: var(--color-secondary);
+    padding: 5px 10px;
+    width: 50%;
+    margin: 0 auto;
 }
