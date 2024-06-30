@@ -613,6 +613,13 @@ select::-ms-expand {
     padding-top: 7px;
     margin-right: 15px;
 }
+.resource-content > h5{
+    color: var(--darkgray);
+}
+.resource-content > h4{
+    color: var(--color-secondary);
+    font-size: 14px;
+}
 .deleteRes{
     position: absolute;
     border: none;
@@ -623,4 +630,50 @@ select::-ms-expand {
     right: -10px;
     padding: 3px;
     background: var(--color-light);
+}
+
+
+/*  */
+
+
+#mySelect2 {
+    appearance: none;
+    outline: 10px red;
+    box-shadow: none;
+    flex: 1;
+    padding: 0 1em;
+    color: var(--color-secondary);
+    border: 2px solid var(--color-secondary);
+    background: transparent;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+#mySelect2:focus,
+#mySelect2:active {
+    color: var(--color-secondary);
+}
+
+#mySelect2::-ms-expand {
+    display: none;
+}
+
+.select2 {
+    position: relative;
+    display: flex;
+    width: 16em;
+    height: 3em;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.select2::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    color: var(--color-secondary);
+    transition: .25s all ease;
+    pointer-events: none;
 }

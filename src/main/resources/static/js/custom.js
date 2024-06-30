@@ -69,6 +69,19 @@
     });
   });
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const cardTasks = document.querySelectorAll(".resource-card");
+    const  idP = document.getElementById("idP");
+    cardTasks.forEach(card => {
+      const btnDeleteTask = card.querySelector(".deleteRes");
+      btnDeleteTask.addEventListener("click", () => {
+        const ResTas = btnDeleteTask.getAttribute("value");
+        const projectId = idP.value;
+        document.querySelector(".deleteResource").href = `/deleteTask?id=${ResTas}&idP=${projectId}`;
+      });
+    });
+  });
+
 
   document.addEventListener("DOMContentLoaded", function() {
     const statuses = document.querySelectorAll("#status");
