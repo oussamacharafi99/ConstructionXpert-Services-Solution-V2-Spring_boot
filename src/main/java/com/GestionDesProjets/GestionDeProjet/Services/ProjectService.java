@@ -20,8 +20,8 @@ public class ProjectService {
     public Page<Project> getAllProjectsByUserId(int userId, Pageable pageable) {
         return projectRepository.findByUserId(userId, pageable);
     }
-    public List<Project> getAllProjectsForId() {
-        return projectRepository.findAll();
+    public List<Project> getAllProjectsForId(int id) {
+        return projectRepository.findProjectByUser_Id(id);
     }
 
     public Project findTaskByProject_Id(Integer id) {

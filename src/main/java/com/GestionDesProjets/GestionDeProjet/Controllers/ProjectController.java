@@ -19,7 +19,8 @@ public class ProjectController {
     private ProjectService projectService;
 
     @GetMapping("/project")
-    public List<Project> getAllProjects() {
-        return projectService.getAllProjectsForId();
+    public List<Project> getAllProjects(HttpSession session) {
+        int userId = (int) session.getAttribute("userId");
+        return projectService.getAllProjectsForId(userId);
     }
 }

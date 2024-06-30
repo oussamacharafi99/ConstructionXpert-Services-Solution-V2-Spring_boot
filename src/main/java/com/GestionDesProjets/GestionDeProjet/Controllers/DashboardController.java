@@ -81,7 +81,7 @@ public class DashboardController {
         Pageable pageable = PageRequest.of(page, size);
         Page<Project> projectPage = projectService.getAllProjectsByUserId(userId, pageable);
 
-        model.addAttribute("projects" , projectService.getAllProjectsForId());
+        model.addAttribute("projects" , projectService.getAllProjectsForId(userId));
         model.addAttribute("projectPage", projectPage);
         model.addAttribute("currentPage", page);
         model.addAttribute("pageSize", size);
@@ -125,7 +125,7 @@ public class DashboardController {
         Project project = projectService.findTaskByProject_Id(id);
 
         model.addAttribute("Oneproject", project);
-        model.addAttribute("projects", projectService.getAllProjectsForId());
+        model.addAttribute("projects", projectService.getAllProjectsForId(userId));
         List<Task> tasks = taskService.getTaskByProjectId(id);
         model.addAttribute("tasks", tasks);
         return "dashProject";
@@ -190,7 +190,7 @@ public class DashboardController {
         Project project = projectService.findTaskByProject_Id(projectId);
 
         model.addAttribute("Oneproject", project);
-        model.addAttribute("projects", projectService.getAllProjectsForId());
+        model.addAttribute("projects", projectService.getAllProjectsForId(userId));
         List<Task> tasks = taskService.getTaskByProjectId(projectId);
         model.addAttribute("tasks", tasks);
         return "dashProject";
