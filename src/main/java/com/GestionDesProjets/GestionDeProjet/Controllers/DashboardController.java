@@ -197,6 +197,18 @@ public class DashboardController {
 
     }
 
+    @GetMapping("/deleteResource")
+    public String deleteResource(@RequestParam("id") int id, @RequestParam("idP") int projectId,@RequestParam("idT") int idT, Model model,  HttpSession session) {
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            return "redirect:/login";
+        }
+        List<Resource> resources = resourceService.findByTaskId(idT);
+        model.addAttribute("Resources", resources);
+        resourceService.deleteResourceById(id);
+        return "redirect:/showProject?id=" + projectId;
+    }
+
 
     /*--------------------- Logout --------------------------*/
 

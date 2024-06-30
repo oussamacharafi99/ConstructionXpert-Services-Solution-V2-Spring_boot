@@ -39,20 +39,21 @@
     const projectView = document.querySelector('.main-right');
     const menu = document.querySelector('.border-menu');
 
-    if (projectView.scrollTop === 0) {
-      menu.style.transition = ".6s"
+    if (projectView.scrollTop >= 0 && projectView.scrollTop < 446) {
+      menu.style.transition = ".6s";
       menu.style.top = "10px";
-    } else if (projectView.scrollTop >= 430 && projectView.scrollTop < 800) {
-      menu.style.transition = ".6s"
+    } else if (projectView.scrollTop >= 446 && projectView.scrollTop < 1053) {
+      menu.style.transition = ".6s";
       menu.style.top = "95px";
-    } else if (projectView.scrollTop >= 800 &&projectView.scrollTop < 1200 ) {
-      menu.style.transition = ".6s"
+    } else if (projectView.scrollTop >= 1053 && projectView.scrollTop < 1431) {
+      menu.style.transition = ".6s";
       menu.style.top = "170px";
-    } else if (projectView.scrollTop >= 1200) {
-      menu.style.transition = ".6s"
-      menu.style.top = "265px";
+    } else if (projectView.scrollTop >= 1431) {
+      menu.style.transition = ".6s";
+      menu.style.top = "255px";
     }
   });
+
 
 
 
@@ -77,7 +78,7 @@
       btnDeleteTask.addEventListener("click", () => {
         const ResTas = btnDeleteTask.getAttribute("value");
         const projectId = idP.value;
-        document.querySelector(".deleteResource").href = `/deleteTask?id=${ResTas}&idP=${projectId}`;
+        document.querySelector(".deleteResource").href = `/deleteResource?id=${ResTas}&idP=${projectId}`;
       });
     });
   });

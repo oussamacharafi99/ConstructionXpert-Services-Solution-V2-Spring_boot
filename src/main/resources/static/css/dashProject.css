@@ -590,6 +590,7 @@ select::-ms-expand {
     align-items: center;
     width: 210px;
     margin: 5px;
+    max-height: 200px;
 }
 .resource-icon{
     width: 50px;
