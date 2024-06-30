@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Setter
 @Getter
@@ -19,8 +20,9 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "user_id")
-    private Integer user_id;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
     @Column(name = "name")
@@ -43,5 +45,8 @@ public class Project {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> resources;
 
 }

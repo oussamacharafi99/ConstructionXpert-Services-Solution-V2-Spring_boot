@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Setter
 @Getter
@@ -21,8 +22,9 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "project_id")
-    private int projectId;
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
 
     @Column(name = "heurs")
     @DateTimeFormat(pattern = "HH:mm")
@@ -43,4 +45,7 @@ public class Task {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Resource> resources;
 }

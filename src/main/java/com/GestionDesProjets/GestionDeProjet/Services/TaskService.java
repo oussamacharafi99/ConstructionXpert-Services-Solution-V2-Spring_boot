@@ -15,7 +15,7 @@ public class TaskService {
     private TaskRepository taskRepository;
 
     public List<Task> getTaskByProjectId(Integer projectId) {
-        return taskRepository.getTaskByProjectId(projectId);
+        return taskRepository.findTaskByProject_Id(projectId);
     }
 
     public List<Task> getAllTasks() {

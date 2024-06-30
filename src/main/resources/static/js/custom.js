@@ -35,6 +35,25 @@
     menu.style.top = value2 + "px";
   }
 
+  document.querySelector('.main-right').addEventListener('scroll', () => {
+    const projectView = document.querySelector('.main-right');
+    const menu = document.querySelector('.border-menu');
+
+    if (projectView.scrollTop === 0) {
+      menu.style.transition = ".6s"
+      menu.style.top = "10px";
+    } else if (projectView.scrollTop >= 430 && projectView.scrollTop < 800) {
+      menu.style.transition = ".6s"
+      menu.style.top = "95px";
+    } else if (projectView.scrollTop >= 800 &&projectView.scrollTop < 1200 ) {
+      menu.style.transition = ".6s"
+      menu.style.top = "170px";
+    } else if (projectView.scrollTop >= 1200) {
+      menu.style.transition = ".6s"
+      menu.style.top = "265px";
+    }
+  });
+
 
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -45,7 +64,7 @@
       btnDeleteTask.addEventListener("click", () => {
         const taskId = btnDeleteTask.getAttribute("value");
         const projectId = idP.value;
-        document.querySelector(".deleteTaskSure").href = `/DeleteTask?id=${taskId}&idP=${projectId}`;
+        document.querySelector(".deleteTaskSure").href = `/deleteTask?id=${taskId}&idP=${projectId}`;
       });
     });
   });
@@ -57,13 +76,13 @@
     statuses.forEach(function(status) {
       switch (status.textContent.trim().toLowerCase()) {
         case "to do":
-          status.style.background = "#00c3ff";
+          status.style.background = "#09b1e4";
           break;
         case "in progress":
-          status.style.background = "#76ff8b";
+          status.style.background = "#3ff45b";
           break;
         case "completed":
-          status.style.background = "#ff0000";
+          status.style.background = "#d32828";
           break;
         default:
           status.style.background = "#ffffff"; // Default color if none match

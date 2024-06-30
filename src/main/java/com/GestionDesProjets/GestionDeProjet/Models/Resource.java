@@ -20,22 +20,18 @@ public class Resource {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "task_id")
-    private int task_id;
+    @ManyToOne
+    @JoinColumn(name = "Task_ID", nullable = false)
+    private Task task;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "Resource_Name", nullable = false)
+    private String resourceName;
 
-    @Column(name = "type")
-    private String type;
+    @Column(name = "Resource_Type", nullable = false)
+    private String resourceType;;
 
-    @Column(name = "heurs")
-    @DateTimeFormat(pattern = "HH:mm")
-    private LocalTime heurs;
-
-    @Column(name = "startDate")
+    @Column(name = "Date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
-
 
 }
